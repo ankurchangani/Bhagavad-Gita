@@ -1,4 +1,4 @@
-
+let view = document.getElementById("view")
 const displayChapters = () => {
     fetch('https://vedicscriptures.github.io/chapters')
       .then(response => response.json())
@@ -12,13 +12,13 @@ const displayChapters = () => {
           let  translation = chapterObj.translation;
           let  transliteration = chapterObj.transliteration;
           
-          const meaning = chapterObj.meaning && chapterObj.meaning.en && chapterObj.meaning.en.hi ? chapterObj.meaning.en.hi : 'Meaning not available';
+          let  meaning = chapterObj.meaning && chapterObj.meaning.en && chapterObj.meaning.en.hi ? chapterObj.meaning.en.hi : 'Meaning not available';
 
-          const summary = chapterObj.summary ? chapterObj.summary : 'Summary not available';
+          let  summary = chapterObj.summary ? chapterObj.summary : 'Summary not available';
   
           // Construct HTML for each chapter
-          const chapterHTML = `
-            <div class="chapter mt-5 ">
+          let  chapterHTML = `
+            <div class="chapter mt-5 p-3" style="background-color: bisque; border-radius: 30px;">
               <h2>${chapterNumber}. ${chapterName}</h2>
               <p>Verses Count: ${versesCount}</p>
               <p>Translation: ${translation}</p>
