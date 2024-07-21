@@ -25,7 +25,7 @@ const displayChapters = () => {
             <p>Transliteration: ${transliteration}</p>
             <p>Meaning: ${meaning}</p>
             <p>Summary: ${typeof summary === 'object' ? JSON.stringify(summary) : summary}</p>
-            <p class="Verses" onclick="versesCount(${chapterNumber}, ${versesCount})">Verses Count: ${versesCount}</p>
+            <p class="Verses" onclick="versesCount(${chapterNumber}, ${versesCount})" style="cursor: pointer;">Verses Count: ${versesCount}</p>
           </div>
         `;
       });
@@ -42,7 +42,7 @@ const versesCount = (number, count) => {
       .then(response => response.json())
       .then(data => {
         modalVersesContent.innerHTML += `
-          <h1 class="my-8 text-4xl text-white font-extrabold text-center">${data.verse}</h1>
+          <h1 class="my-8 text-4xl text-white font-extrabold text-center" >${data.verse}</h1>
           <h3 class="text-[#f57903] text-lg uppercase font-medium text-center my-6">${data.slok}</h3>
           <p class="mt-3 text-white text-lg text-center">${data.transliteration}</p>
         `;
