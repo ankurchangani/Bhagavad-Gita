@@ -17,15 +17,18 @@ const displayChapters = () => {
         let transliteration = chapterObj.transliteration;
         let meaning = chapterObj.meaning && chapterObj.meaning.en && chapterObj.meaning.en.hi ? chapterObj.meaning.en.hi : 'Meaning not available';
         let summary = chapterObj.summary ? chapterObj.summary : 'Summary not available';
-        
+
         view.innerHTML += `
-          <div class="chapter mt-5 p-3" style="background-color: bisque; border-radius: 30px;">
+          <div class="chapter mt-5 p-3">
             <h2>${chapterNumber}. ${chapterName}</h2>
             <p>Translation: ${translation}</p>
             <p>Transliteration: ${transliteration}</p>
             <p>Meaning: ${meaning}</p>
             <p>Summary: ${typeof summary === 'object' ? JSON.stringify(summary) : summary}</p>
-            <p class="Verses" onclick="versesCount(${chapterNumber}, ${versesCount})" style="cursor: pointer;">Verses Count: ${versesCount}</p>
+            <button class="btn btn-warning fw-bold mt-3 verses-btn" onclick="versesCount(${chapterNumber}, ${versesCount})">
+  View Verses (${versesCount})
+</button>
+
           </div>
         `;
       });
@@ -52,6 +55,7 @@ const versesCount = (number, count) => {
       });
   }
   var versesModal = new bootstrap.Modal(document.getElementById('versesModal'));
+
   versesModal.show();
 }
 
